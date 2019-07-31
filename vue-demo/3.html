@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <com1  @inc="increase" ></com1>
+        <com1 @inc="increase"></com1>
+        <h1>{{total}}</h1>
+    </div>
+    <script>
+    let com1 = {
+        template:"<div @click='handleClick'>{{count}}</div>",
+        data(){
+            return{
+                count:0
+            }
+        },
+        methods:{
+            handleClick(){
+                this.count++;
+                this.$emit("inc",this.count)
+            }
+        }
+    }
+    let vm = new Vue({
+        el:"#app",
+        components:{
+            com1
+        },
+        data:{
+            total:0
+        },
+        methods:{
+            increase(a){
+                this.total+=1
+            }
+        }
+    })
+    </script>
+</body>
+</html>

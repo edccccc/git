@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <com1>        
+            <template v-slot:header>
+                <div >
+                    <h1>Header</h1>
+                </div>
+            </template>
+            <template v-slot:content>
+                <div >
+                    <h1>content</h1>
+                </div>
+            </template>
+            <template v-slot:footer>
+                <div >
+                    <h1>footer</h1>
+                </div>
+            </template>
+        </com1>
+    </div>
+    <script>
+        Vue.component("com1",{
+            template:`<div><slot name="header"/><slot name="content"/><slot name="footer"/></div>`
+        })
+        let vm = new Vue({
+            el:"#app",
+            data:{
+
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js"></script>
+    <style>
+    .v-enter,.v-leave-to{
+        opacity: 0;
+    }
+    .v-enter-active,.v-leave-active{
+        transition: all .5s ease;
+    }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <transition mode="out-in">
+        <component :is="com"></component>
+    </transition>
+    <button @click="toggle">toggle</button>
+    </div>
+    <script>
+    var child ={
+        template:"<h1>Child</h1>"
+    }
+    var childOne ={
+        template:"<h1>ChildOne</h1>"
+    }
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            com:"child"
+        },
+        components:{
+            child,
+            childOne
+        },
+        methods:{
+            toggle(){
+                this.com = this.com==="child"?"childOne":"child"
+            }
+        }
+    })
+    </script>
+</body>
+</html>

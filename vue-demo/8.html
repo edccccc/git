@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="vue.js"></script>
+    <style>
+    @keyframes bunceIn{
+        0%{
+            transform: scale(0)
+        }
+        50%{
+            transform: scale(50%)
+        }
+        100%{
+            transform: scale(100%)
+        }
+    }
+    .v-enter-active{
+        transform-origin: left center;
+        animation: bunceIn 1s;
+    }
+    .v-leave-active{
+        transform-origin: left center;
+        animation: bunceIn 1s reverse;
+    }
+    </style>
+</head>
+<body>
+        <div id="app">
+                <transition>
+                <div v-if="show">hello</div>
+                </transition>
+                <button @click="toggle">toggle</button>
+            </div>
+            <script>
+            let vm = new Vue({
+                el:"#app",
+                data:{
+                    show:true
+                },
+                methods:{
+                    toggle(){
+                        this.show=!this.show
+                    }
+                }
+            })
+            </script>
+</body>
+</html>
